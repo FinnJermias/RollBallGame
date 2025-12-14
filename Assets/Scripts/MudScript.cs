@@ -4,44 +4,41 @@ using UnityEngine;
 
 public class MudScript : MonoBehaviour
 {
-   
-    public float mudFactor = 5f;           // Higher = stickier mud
-    public float playerForceMultiplier = 0.5f; // Reduce ball force inside mud
+    public float mudDrag = 6f;
+    private float originalDrag;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider player)
     {
-        if (other.CompareTag("Player"))
+        if (!player.CompareTag("Player")) return;
+
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        if (rb != null)
         {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            RollScript roll = other.GetComponent<RollScript>();
+            originalDrag = rb.drag;
+            rb.drag = mudDrag;
+        }
 
-            if (rb != null)
-            {
-                if (rb.velocity.magnitude > 0.01f) // avoid divide by zero
-                {
-                    Vector3 resistForce = -rb.velocity.normalized * mudFactor * rb.velocity.magnitude;
-                    rb.AddForce(resistForce, ForceMode.Acceleration);
-                }
-            }
-
-            if (roll != null)
-            {
-                // Reduce player's input force while in mud
-                roll.force *= playerForceMultiplier;
-            }
+        RollScript roll = player.GetComponent<RollScript>();
+        if (roll != null)
+        {
+            roll.force = roll.startForce * 0.5f;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider player)
     {
-        if (other.CompareTag("Player"))
+        if (!player.CompareTag("Player")) return;
+
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        if (rb != null)
         {
-            RollScript roll = other.GetComponent<RollScript>();
-            if (roll != null)
-            {
-                // Restore normal force when leaving mud
-                roll.force /= playerForceMultiplier;
-            }
+            rb.drag = originalDrag;
+        }
+
+        RollScript roll = player.GetComponent<RollScript>();
+        if (roll != null)
+        {
+            roll.force = roll.startForce; 
         }
     }
 }

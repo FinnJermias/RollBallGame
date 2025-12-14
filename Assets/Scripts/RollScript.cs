@@ -6,37 +6,47 @@ using TMPro;
 public class RollScript : MonoBehaviour
 {
     Rigidbody rb;
-    public int velocity = 3;
-    public float force = 2f;
-    public float speedLimit = 70f;
+    public float force = 3f;
+    public float startForce;
+    public float speedLimit = 60f;
     public TMP_Text speedNow;
-    
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startForce = force;
     }
-    private void Update()
+
+    void Update()
     {
-        float currentSpeed = rb.velocity.z;
+        float currentSpeed = rb.velocity.magnitude;
         speedNow.text = "Speed: " + currentSpeed.ToString("F2");
     }
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
         Vector3 move = new Vector3(horizontal, 0, vertical);
-            rb.AddForce(move * force);
+        rb.AddForce(move * force, ForceMode.Acceleration);
 
-        if (rb.velocity.magnitude > speedLimit) // .magnitude means velocity to all direction x,y,z
+        // Proper speed limit (does NOT kill A/D)
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        if (flatVel.magnitude > speedLimit)
         {
-
-            rb.velocity = rb.velocity.normalized * speedLimit; // .normalized means that it removes velocity from our player and only getting the direction 
-
+            Vector3 limitedVel = flatVel.normalized * speedLimit;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+    }
 
+    public void SetForceMultiplier(float multiplier)
+    {
+        force = startForce * multiplier;
+    }
+
+    public void ResetForce()
+    {
+        force = startForce;
     }
 }
