@@ -11,10 +11,16 @@ public class RollScript : MonoBehaviour
     public float speedLimit = 60f;
     public TMP_Text speedNow;
 
+    public GameObject hitEffect;
+    public GameObject mudEffect;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         startForce = force;
+
+        hitEffect.SetActive(false);
+        mudEffect.SetActive(false);
     }
 
     void Update()
@@ -48,5 +54,28 @@ public class RollScript : MonoBehaviour
     public void ResetForce()
     {
         force = startForce;
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            hitEffect.SetActive(true);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Mud"))
+        {
+            mudEffect.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Mud"))
+        {
+            mudEffect.SetActive(false);
+        }
     }
 }
