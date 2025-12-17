@@ -11,16 +11,16 @@ public class RollScript : MonoBehaviour
     public float speedLimit = 60f;
     public TMP_Text speedNow;
 
-    public GameObject hitEffect;
-    public GameObject mudEffect;
-
+    public ParticleSystem hitEffect;
+    public ParticleSystem mudEffect;
+    public GameObject ParticleSpawn;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         startForce = force;
 
-        hitEffect.SetActive(false);
-        mudEffect.SetActive(false);
+        hitEffect.Stop();
+        mudEffect.Stop();
     }
 
     void Update()
@@ -59,7 +59,10 @@ public class RollScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            hitEffect.SetActive(true);
+            
+            
+           ParticleSystem hiteff = Instantiate(hitEffect, ParticleSpawn.transform.position, Quaternion.identity);
+            Destroy(hiteff.gameObject, 5f);
         }
     }
 
@@ -67,7 +70,9 @@ public class RollScript : MonoBehaviour
     {
         if (other.CompareTag("Mud"))
         {
-            mudEffect.SetActive(true);
+           
+            ParticleSystem mudEff = Instantiate(mudEffect, ParticleSpawn.transform.position, Quaternion.identity);
+            Destroy(mudEff.gameObject, 5f);
         }
     }
 
@@ -75,7 +80,8 @@ public class RollScript : MonoBehaviour
     {
         if (other.CompareTag("Mud"))
         {
-            mudEffect.SetActive(false);
+            mudEffect.Stop();
+            
         }
     }
 }

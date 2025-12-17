@@ -493,6 +493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleWall
       objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
 --- !u!4 &263433665 stripped
@@ -555,6 +559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleWall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
 --- !u!1001 &278429994
@@ -611,6 +619,10 @@ PrefabInstance:
     - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
       propertyPath: m_Name
       value: ObstacleWall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
@@ -777,6 +789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleWall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
 --- !u!1 &435404734
@@ -815,6 +831,37 @@ Transform:
   - {fileID: 2145246372}
   m_Father: {fileID: 0}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &493699316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493699317}
+  m_Layer: 0
+  m_Name: EffectSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &493699317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493699316}
+  m_LocalRotation: {x: -0, y: -0.999984, z: -0, w: -0.0056577306}
+  m_LocalPosition: {x: 0.04, y: -0.287, z: -0.114}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1424198791}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511060440
 GameObject:
@@ -5784,7 +5831,7 @@ GameObject:
   - component: {fileID: 575446051}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6077,6 +6124,10 @@ PrefabInstance:
     - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
       propertyPath: m_Name
       value: ObstacleWall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
@@ -6468,6 +6519,10 @@ PrefabInstance:
     - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
       propertyPath: m_Name
       value: ObstacleWall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
@@ -6870,6 +6925,10 @@ PrefabInstance:
     - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
       propertyPath: m_Name
       value: ObstacleWall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
@@ -7278,7 +7337,8 @@ Transform:
   m_LocalPosition: {x: 0.65000117, y: 2.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 493699317}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180.648, z: 0}
@@ -7298,6 +7358,9 @@ MonoBehaviour:
   startForce: 0
   speedLimit: 60
   speedNow: {fileID: 778375883}
+  hitEffect: {fileID: 1357087589321908287, guid: e7a8931b322b9c648a131b1938ad5b31, type: 3}
+  mudEffect: {fileID: 4738606678924509561, guid: 0aebe826973bc9e449382ebbe83dbccd, type: 3}
+  ParticleSpawn: {fileID: 493699316}
 --- !u!1001 &1455435466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7709,6 +7772,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleWall
       objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
 --- !u!1001 &1897179889
@@ -7953,6 +8020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleWall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
 --- !u!1001 &1979124051
@@ -8009,6 +8080,10 @@ PrefabInstance:
     - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
       propertyPath: m_Name
       value: ObstacleWall (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693316330763819180, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c371baa200e66b42a2f27ada929a13f, type: 3}
