@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayLevel1()
     {
-        SceneManager.LoadScene("DirtLevel"); // change name
+        SceneManager.LoadScene("DirtLevel"); 
     }
 
     public void PlayLevel2()
