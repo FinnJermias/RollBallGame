@@ -35,7 +35,7 @@ public class RollScript : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
 
         Vector3 move = new Vector3(horizontal, 0, vertical);
-        rb.AddForce(move * force, ForceMode.Acceleration);
+        rb.AddForce(move * force, ForceMode.Force); //using ForceMode.Force allows AddForce to take mass into consideration
 
         // Proper speed limit (does NOT kill A/D)
         Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
