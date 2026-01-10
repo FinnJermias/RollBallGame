@@ -4,41 +4,43 @@ using UnityEngine;
 
 public class MudScript : MonoBehaviour
 {
-    public float mudDrag = 6f;
-    private float originalDrag;
+    public float mudDrag = 6f; //controls mud slowness
+    private float originalDrag = 0; //players original drag
 
     private void OnTriggerEnter(Collider player)
     {
-        if (!player.CompareTag("Player")) return;
-
-        Rigidbody rb = player.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (player.CompareTag("Player"))
         {
-            originalDrag = rb.drag;
-            rb.drag = mudDrag;
-        }
+            Rigidbody rb = player.GetComponent<Rigidbody>(); //gets player rigidbody
+            if (rb != null)
+            {
+                originalDrag = rb.drag; // stores players drag onto original drag to remember
+                rb.drag = mudDrag; // change player drag to muddrag
+            }
 
-        RollScript roll = player.GetComponent<RollScript>();
-        if (roll != null)
-        {
-            roll.force = roll.startForce * 0.5f;
+            RollScript roll = player.GetComponent<RollScript>();
+            if (roll != null)
+            {
+                roll.force = roll.startForce * 0.5f; //reduces player input
+            }
         }
     }
 
     private void OnTriggerExit(Collider player)
     {
-        if (!player.CompareTag("Player")) return;
-
-        Rigidbody rb = player.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (player.CompareTag("Player"))
         {
-            rb.drag = originalDrag;
-        }
+            Rigidbody rb = player.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.drag = originalDrag; //returns player drag
+            }
 
-        RollScript roll = player.GetComponent<RollScript>();
-        if (roll != null)
-        {
-            roll.force = roll.startForce; 
+            RollScript roll = player.GetComponent<RollScript>();
+            if (roll != null)
+            {
+                roll.force = roll.startForce; //returns player force
+            }
         }
     }
 }

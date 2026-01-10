@@ -19,7 +19,7 @@ public class FinishScript : MonoBehaviour
     private void OnTriggerEnter(Collider player)
     {
 
-        if (!player.CompareTag("Player")) return;
+        if (player.CompareTag("Player"))
         {
             SceneManager.LoadScene("1.MainMenu");
         }

@@ -6,63 +6,51 @@ using TMPro;
 public class RollScript : MonoBehaviour
 {
     Rigidbody rb;
-    public float force = 3f;
-    public float startForce;
+    public float force = 3.5f;
+    public float startForce = 0f;
     public float speedLimit = 60f;
     public TMP_Text speedNow;
 
     public ParticleSystem hitEffect;
     public ParticleSystem mudEffect;
+    private ParticleSystem activatemud;
     public GameObject ParticleSpawn;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        startForce = force;
-
-        hitEffect.Stop();
-        mudEffect.Stop();
+        startForce = force; //we use this because we want to make sure startforce is exactly the same as the force currently
     }
 
     void Update()
     {
-        float currentSpeed = rb.velocity.magnitude;
-        speedNow.text = "Speed: " + currentSpeed.ToString("F2");
+        float currentSpeed = rb.velocity.magnitude; //grabs total of velocity
+        speedNow.text = "Speed: " + currentSpeed.ToString("F2"); 
     }
 
     void FixedUpdate()
     {
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical"); //front or back
+        float horizontal = Input.GetAxis("Horizontal"); //sides
 
         Vector3 move = new Vector3(horizontal, 0, vertical);
         rb.AddForce(move * force, ForceMode.Force); //using ForceMode.Force allows AddForce to take mass into consideration
 
-        // Proper speed limit (does NOT kill A/D)
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        if (flatVel.magnitude > speedLimit)
+        // Speed limit
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);  //gets current speed with and without inputs
+        if (flatVel.magnitude > speedLimit) //checks if total velocity is more than speedlimit
         {
-            Vector3 limitedVel = flatVel.normalized * speedLimit;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            Vector3 limitedVel = flatVel.normalized * speedLimit; // make the velocity move at a limited rate 
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z); //change rigidbody velocity with the limited velocity
         }
     }
 
-    public void SetForceMultiplier(float multiplier)
-    {
-        force = startForce * multiplier;
-    }
-
-    public void ResetForce()
-    {
-        force = startForce;
-    }
+   
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            
-            
-           ParticleSystem hiteff = Instantiate(hitEffect, ParticleSpawn.transform.position, Quaternion.identity);
-            Destroy(hiteff.gameObject, 5f);
+           ParticleSystem hiteff = Instantiate(hitEffect, ParticleSpawn.transform.position, Quaternion.identity); //creates game object hiteff
+            Destroy(hiteff.gameObject, 1f); // destroy 
         }
     }
 
@@ -70,18 +58,25 @@ public class RollScript : MonoBehaviour
     {
         if (other.CompareTag("Mud"))
         {
-           
-            ParticleSystem mudEff = Instantiate(mudEffect, ParticleSpawn.transform.position, Quaternion.identity);
-            Destroy(mudEff.gameObject, 5f);
+            if (activatemud == null)
+            {
+                activatemud = Instantiate(mudEffect, ParticleSpawn.transform.position, Quaternion.identity, ParticleSpawn.transform);
+               
+            }
+            activatemud.Play();
         }
     }
-
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Mud"))
         {
-            mudEffect.Stop();
-            
+            if (activatemud != null)
+            {
+                activatemud.Stop();
+                Destroy(activatemud.gameObject, 1f);
+                activatemud = null;
+            }
+           
         }
     }
 }

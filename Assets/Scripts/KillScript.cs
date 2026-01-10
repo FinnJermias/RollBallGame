@@ -11,10 +11,9 @@ public class KillScript : MonoBehaviour
         if (player.CompareTag("Player"))
         {
             Rigidbody rb = player.GetComponent<Rigidbody>();
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero; // kills velocity
 
-            player.transform.position = respawnPoint.position;
+            player.transform.position = respawnPoint.position; //player goes back to spawn
         }
     }
 }

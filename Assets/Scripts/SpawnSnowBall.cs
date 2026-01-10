@@ -14,6 +14,7 @@ public class SpawnSnowBall : MonoBehaviour
     {
         StartCoroutine(SpawnRoutine()); //startcoroutine says hey start this method
                                         //i have and dont stop until a stopCoroutine is added or checkspawn turns false
+        
     }
 
     IEnumerator SpawnRoutine() //IEnumerator means that the method can pause and continue
@@ -28,6 +29,6 @@ public class SpawnSnowBall : MonoBehaviour
     void SpawnFromSky()
     {
         GameObject snowball = Instantiate(snowballPrefab,SpawnPoint.position,SpawnPoint.rotation);
-        Destroy(snowball, 12f);
+        Destroy(snowball, 7.5f);
     }
 }

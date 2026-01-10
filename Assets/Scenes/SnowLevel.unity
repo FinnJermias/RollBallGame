@@ -3795,7 +3795,7 @@ MonoBehaviour:
   snowballPrefab: {fileID: 8069692262601565234, guid: 253fcf0a63a44de43bf893ece3cbe56a, type: 3}
   SpawnPoint: {fileID: 1660041392}
   checkspawn: 1
-  spawnInterval: 7
+  spawnInterval: 4
 --- !u!4 &1660041392
 Transform:
   m_ObjectHideFlags: 0

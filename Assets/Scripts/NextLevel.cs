@@ -20,7 +20,7 @@ public class NextLevel : MonoBehaviour
     private void OnTriggerEnter(Collider player)
     {
 
-        if (!player.CompareTag("Player")) return;
+        if (player.CompareTag("Player")) 
         {
             SceneManager.LoadScene("SnowLevel"); 
         }
