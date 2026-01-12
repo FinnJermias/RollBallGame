@@ -45,18 +45,19 @@ public class RollScript : MonoBehaviour
     }
 
    
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
            ParticleSystem hiteff = Instantiate(hitEffect, ParticleSpawn.transform.position, Quaternion.identity); //creates game object hiteff
             Destroy(hiteff.gameObject, 1f); // destroy 
         }
+        
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider trigger)
     {
-        if (other.CompareTag("Mud"))
+        if (trigger.CompareTag("Mud"))
         {
             if (activatemud == null)
             {
@@ -66,9 +67,9 @@ public class RollScript : MonoBehaviour
             activatemud.Play();
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider trigger)
     {
-        if (other.CompareTag("Mud"))
+        if (trigger.CompareTag("Mud"))
         {
             if (activatemud != null)
             {

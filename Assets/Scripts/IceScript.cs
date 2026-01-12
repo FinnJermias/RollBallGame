@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IceScript : MonoBehaviour
 {
-    public float iceDrag = 4f;
+    public float iceDrag = 3f;
     private float originalDrag;
 
     private void OnTriggerEnter(Collider player)

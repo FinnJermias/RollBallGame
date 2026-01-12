@@ -8,12 +8,12 @@ public class SpawnSnowBall : MonoBehaviour
     public Transform SpawnPoint;
     public bool checkspawn = true;
 
-    public float spawnInterval = 3f;
+    public float spawnInterval ;
 
     void Start()
     {
-        StartCoroutine(SpawnRoutine()); //startcoroutine says hey start this method
-                                        //i have and dont stop until a stopCoroutine is added or checkspawn turns false
+        StartCoroutine(SpawnRoutine()); //startcoroutine says "hey start this method
+                                        //i have and dont stop until a stopCoroutine is added or checkspawn turns false"
         
     }
 
@@ -28,7 +28,7 @@ public class SpawnSnowBall : MonoBehaviour
 
     void SpawnFromSky()
     {
-        GameObject snowball = Instantiate(snowballPrefab,SpawnPoint.position,SpawnPoint.rotation);
-        Destroy(snowball, 7.5f);
+        GameObject snowball = Instantiate(snowballPrefab,SpawnPoint.position,SpawnPoint.rotation); //spawn snowball
+        Destroy(snowball, 7.5f); //destroy after 7.5 second
     }
 }

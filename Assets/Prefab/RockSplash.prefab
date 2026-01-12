@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1357087589321908287}
   - component: {fileID: 1144696320323364064}
   m_Layer: 0
-  m_Name: ParticleSplash
+  m_Name: RockSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
