@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceScript : MonoBehaviour
+public class SnowPileScript : MonoBehaviour
 {
-    public float iceDrag = 3f;
+    public float snowDrag = 3f;
     private float originalDrag;
 
     private void OnTriggerEnter(Collider player)
@@ -15,7 +15,7 @@ public class IceScript : MonoBehaviour
             if (rb != null)
             {
                 originalDrag = rb.drag;
-                rb.drag = iceDrag;
+                rb.drag = snowDrag;
             }
 
             RollScript roll = player.GetComponent<RollScript>();
