@@ -5,7 +5,7 @@ using UnityEngine;
 public class MudScript : MonoBehaviour
 {
     public float mudDrag = 6f; //controls mud slowness
-    private float originalDrag = 0; //players original drag
+    private float originalDrag ; //players original drag
 
     private void OnTriggerEnter(Collider player)
     {
